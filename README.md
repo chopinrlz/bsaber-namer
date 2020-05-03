@@ -1,2 +1,2 @@
 # bsaber-namer
-PowerShell module to unpack and rename bsaber downloads
+PowerShell script to unpack and rename bsaber downloads
