@@ -1,28 +1,28 @@
 Param(
-    [switch]$FromHere,
-    [string]$SourcePath,
     [Parameter(Mandatory=$true)]
-    [string]$OculusApps
+    [string]$OculusAppsPath,
+    [string]$SourcePath,
+    [switch]$FromDownloads
 )
-if( $FromHere ) {
-    $SourcePath = $PSScriptRoot
+if( $FromDownloads ) {
+    $SourcePath = "$env:USERPROFILE\Downloads"
 } else {
     if( -not $SourcePath ) {
-        $SourcePath = "$env:USERPROFILE\Downloads"
+        $SourcePath = $PSScriptRoot
     }
 }
 if( -not (Test-Path $SourcePath) ) {
-    Write-Warning "Source path $SourcePath does not exist"
+    Write-Warning "Source path $SourcePath does not exist or cannot be accessed"
     exit
 }
-if( -not (Test-Path $OculusApps) ) {
-    Write-Warning "Oculus Apps path $OculusApps does not exist"
+if( -not (Test-Path $OculusAppsPath) ) {
+    Write-Warning "Oculus Apps path $OculusAppsPath does not exist"
     exit
 }
 $source = Join-Path -Path $SourcePath -ChildPath "*"
-$target = Join-Path -Path $OculusApps -ChildPath "Software\hyperbolic-magnetism-beat-saber\Beat Saber_Data\CustomLevels"
+$target = Join-Path -Path $OculusAppsPath -ChildPath "Software\hyperbolic-magnetism-beat-saber\Beat Saber_Data\CustomLevels"
 if( -not (Test-Path $target) ) {
-    Write-Warning "Could not access the Custom Levels path for Beat Saber in the OculusApps folder"
+    Write-Warning "Could not access the Custom Levels path for Beat Saber in the OculusAppsPath folder"
     exit
 }
 Get-Item -Path $source | ? Name -match "[a-f,0-9]{40}\.zip" | % {
