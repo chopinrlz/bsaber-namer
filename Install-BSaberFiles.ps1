@@ -35,7 +35,10 @@ Get-Item -Path $source | ? Name -match "[a-f,0-9]{40}\.zip" | % {
     $name = $name -replace "[$([Regex]::Escape( $chars ))]"," "
     $newFullPath = Join-Path -Path $target -ChildPath $name
     if( -not (Test-Path $newFullPath) ) {
-        Rename-Item -Path $destination -NewName $name
+        Rename-Item -Path $destination -NewName $name -ErrorAction SilentlyContinue -ErrorVariable RenameError
+        if( $RenameError ) {
+            Write-Warning "Could not rename folder $name"
+        }
     } else {
         Write-Warning "$name already exists"
     }

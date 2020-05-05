@@ -20,7 +20,10 @@ function Remove-IllegalCharacters {
 Get-Item "$PSScriptRoot\*" | ? Name -match "[a-f,0-9]{40}" | % {
     $newName = Get-Content -LiteralPath ($_.FullName | Join-Path -ChildPath "info.dat") | ConvertFrom-Json | Get-FolderName | Remove-IllegalCharacters
     if ( -not (Test-Path $newName) ) {
-        Rename-Item -Path $_.FullName -NewName $newName
+        Rename-Item -Path $_.FullName -NewName $newName -ErrorAction SilentlyContinue -ErrorVariable FolderError
+        if( $FolderError ) {
+            Write-Warning "Could not set folder name $newName"
+        }
     } else {
         Write-Warning "$newName already exists"
     }
