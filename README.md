@@ -19,7 +19,7 @@ Parameter | Required | Description
 --- | --- | ---
 OculusAppsPath | required | the literal path to your Oculus Apps root folder
 SourcePath | optional | the literal path to your bsaber.com custom song ZIP files, defaults to the directory where the script is located
-FromDownloads | optional | switch to ignore SourcePath and user your user profile downloads folder instead
+FromDownloads | optional | switch to ignore SourcePath and use your user profile downloads folder instead
 
 ## Examples
 
