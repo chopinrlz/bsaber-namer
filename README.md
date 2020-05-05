@@ -23,14 +23,16 @@ FromDownloads | optional | switch to ignore SourcePath and use your user profile
 
 ## Examples
 
-### Install from where you put the script to D:\Oculus Apps
+All of the following examples assume your Oculus Apps folder is located in "D:\Oculus Apps"
+
+### Install from where you put the script
 
 .\Install-BSaberFiles.ps1 -OculusAppsPath "D:\Oculus Apps"
 
-### Install from your profile's Downloads folder to D:\Oculus Apps
+### Install from your profile's Downloads folder
 
 .\Install-BSaberFiles.ps1 -OculusAppsPath "D:\Oculus Apps" -FromDownloads
 
-### Install from an arbitrary folder F:\Games\Beat Saber\Custom Songs to D:\Oculus Apps
+### Install from an arbitrary folder F:\Games\Beat Saber\Custom Songs
 
 .\Install-BSaberFiles.ps1 -OculusAppsPath "D:\Oculus Apps" -SourcePath "F:\Games\Beat Saber\Custom Songs"
