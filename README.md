@@ -6,9 +6,9 @@ bsaber-namer is a collection of scripts to help you unzip, rename, install, and 
 
 * All Scripts Require PowerShell 7.0
 
-# Fix-BSaberFiles.ps1
-
 <hr />
+
+# Fix-BSaberFiles.ps1
 
 This script will rename your bsaber.com folders from their original ZIP file names using the song title, artist, and mapper. This script will run in the folder you specify with the `Path` parameter and will process any subfolders which contain the `info.dat` JSON file which describes the Beat Saber custom song. Subfolders will be named using this format:
 ```
@@ -25,9 +25,9 @@ This will put all of your custom Beat Saber songs in alphabetical order by song 
 
 **NOTE: EVERY custom song folder in `Path` will be renamed. You cannot UNDO this action.**
 
-# Install-BSaberFiles.ps1
-
 <hr />
+
+# Install-BSaberFiles.ps1
 
 This script will automatically install custom songs downloaded from bsaber.com to the Custom Songs folder in the Oculus Apps directory. It will automatically find all the ZIP files matching the bsaber.com naming convention, unzip them to the Custom Songs folder, and rename the target directory to match the song name based on the JSON contained in the info.dat file. Beat Saber will show you your custom songs in Song Title order.
 ## Prerequisites
@@ -64,7 +64,10 @@ All of the following examples assume your Oculus Apps folder is located in "D:\O
 
     .\Install-BSaberFiles.ps1 -OculusAppsPath "D:\Oculus Apps" -SourcePath "F:\Games\Beat Saber\Custom Songs"
 
-## Unpack-BSaberFiles.ps1
+<hr />
+
+# Unpack-BSaberFiles.ps1
+
 This script will unzip a bunch of bsaber.com custom songs into the current folder and rename their destination folders to match the song, artist, and mapper. This script will run in the folder where you place it or some other location by specifying the optional $Path parameter.
 
 ## Usage
